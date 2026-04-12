@@ -46,11 +46,14 @@ scores:
   quality: 7
   value: 6
   timeliness: 7
-  standalone: 4
+  standalone: 5
   voice: 7
-  importance: 7
+  importance: 6
 ---
 {{< include /knowledge/includes/setup-parameters.qmd >}}
+
+![A protocol combining five primitives (transparent ledger, preference aggregation, evidence engine, identity verification, automated monetary policy) to replace mechanical government functions, recover visible citizen dividends, and stop wasting 17% (95% CI: 12.6%-22.6%) of GDP on humans doing robot work, while preserving democratic control.](/assets/infographics/knowledge/appendix/algorithmic-public-administration-paper-infographic-bw-academic.jpg)
+
 
 Intermediation cost of governance in the United States: {{< var us_gov_waste_total >}} per year. People employed to execute functions that are algorithmic in nature: millions. Time since the technology to replace them became available: 17 years. Number of agencies replaced: zero. This is a technical specification for the obvious.
 

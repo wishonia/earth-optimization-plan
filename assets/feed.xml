@@ -5,8 +5,32 @@
     <link>https://manual.WarOnDisease.org</link>
     <description>The Complete Idiot's Guide to Legally Bribing Your Way to Utopia</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 10 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://manual.WarOnDisease.org/assets/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Investor Risk Analysis</title>
+      <link>https://manual.WarOnDisease.org/knowledge/appendix/investor-risk-analysis.html</link>
+      <guid>https://manual.WarOnDisease.org/knowledge/appendix/investor-risk-analysis.html</guid>
+      <description>VICTORY Incentive Alignment Bonds vs. Traditional Venture Capital - Analysis of the unique risk profile of a 1% treaty initiative, comparing its political arbitrage model to the market-risk model of venture capital.</description>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 +0000</pubDate>
+      <itunes:image href="https://manual.WarOnDisease.org/assets/podcast/investor-risk-analysis-podcast.jpg"/>
+    </item>
+    <item>
+      <title>Treaty Feasibility &amp; Cost Analysis</title>
+      <link>https://manual.WarOnDisease.org/knowledge/appendix/treaty-feasibility.html</link>
+      <guid>https://manual.WarOnDisease.org/knowledge/appendix/treaty-feasibility.html</guid>
+      <description>Previous treaties failed because they ran on guilt. Guilt has terrible fuel efficiency. This one runs on greed, which is (regrettably) humanity's only reliable fuel source.</description>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 +0000</pubDate>
+      <itunes:image href="https://manual.WarOnDisease.org/assets/podcast/treaty-feasibility-podcast.jpg"/>
+    </item>
+    <item>
+      <title>The Legislation Package</title>
+      <link>https://manual.WarOnDisease.org/knowledge/strategy/legislation-package.html</link>
+      <guid>https://manual.WarOnDisease.org/knowledge/strategy/legislation-package.html</guid>
+      <description>How to Write Laws That Actually Pass</description>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0000</pubDate>
+      <itunes:image href="https://manual.WarOnDisease.org/assets/podcast/legislation-package-podcast.jpg"/>
+    </item>
     <item>
       <title>Election Law</title>
       <link>https://manual.WarOnDisease.org/knowledge/legal/election-law.html</link>
@@ -227,7 +251,7 @@
       <title>A 1% Treaty</title>
       <link>https://manual.WarOnDisease.org/knowledge/solution/1-percent-treaty.html</link>
       <guid>https://manual.WarOnDisease.org/knowledge/solution/1-percent-treaty.html</guid>
-      <description>You have enough nuclear weapons to kill everyone 13 times. Here's how to settle for 12.87 times and use the savings on medicine. Controversial, apparently.</description>
+      <description>You have enough nuclear weapons to kill everyone 20 times. Here's how to settle for 19.8 times and use the savings on medicine. Controversial, apparently.</description>
       <pubDate>Tue, 10 Mar 2026 00:00:00 +0000</pubDate>
       <itunes:image href="https://manual.WarOnDisease.org/assets/podcast/1-percent-treaty-podcast.jpg"/>
     </item>

@@ -46,15 +46,17 @@ book:
   #issue-url: https://github.com/mikepsinn/decentralized-institutes-of-health/issues/new
   navbar:
     right:
-      - text: "VOTE"
+      - icon: check2-square
+        text: "VOTE"
         href: https://WarOnDisease.org
-      - text: "TALK"
+      - icon: chat-dots
+        text: "TALK"
         href: https://transmit.warondisease.org
-      - text: "SUPPORT"
-        href: https://github.com/sponsors/wishonia
-      - text: "GET THE MANUAL"
+      - icon: book
+        text: "GET MANUAL"
         href: knowledge/links.qmd
-      - text: "LISTEN"
+      - icon: headphones
+        text: "LISTEN"
         href: knowledge/podcast.qmd
   sidebar:
     collapse-level: 1
@@ -81,8 +83,8 @@ book:
             text: "References & Citations"
   page-footer:
     left: "© 2025 [Mike P. Sinn](https://mikesinn.com) | [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)"
-    center: "[Get the Manual](/knowledge/links.html) | [Listen](/knowledge/podcast.html) | [All Papers](/knowledge/papers.html)"
-    right: "[Vote](https://WarOnDisease.org)"
+    center: "[Get Manual](/knowledge/links.html) | [Listen](/knowledge/podcast.html) | [All Papers](/knowledge/papers.html)"
+    right: "[Support](https://github.com/sponsors/wishonia) | [Vote](https://WarOnDisease.org)"
   chapters:
     - text: "Start Here"
       href: index.qmd  # ~19p
@@ -193,6 +195,8 @@ book:
         - knowledge/appendix/dfda-impact-paper.qmd # Standalone paper config: _quarto-dfda-impact.yml
         - knowledge/appendix/incentive-alignment-bonds-paper.qmd # Standalone paper config: _quarto-iab.yml
         - knowledge/appendix/wishocracy-paper.qmd # Standalone paper config: _quarto-wishocracy.yml
+        - knowledge/appendix/extinction-surplus.qmd
+        - knowledge/appendix/cost-benefit-of-hegemony.qmd
         - knowledge/appendix/political-dysfunction-tax.qmd # Standalone paper config: _quarto-political-dysfunction-tax.yml
         - knowledge/appendix/invisible-graveyard.qmd # Standalone paper config: _quarto-invisible-graveyard.yml
         - knowledge/appendix/cost-of-change-analysis.qmd # Standalone paper config: _quarto-cost-of-change.yml
@@ -430,8 +434,12 @@ format:
   html:
     lightbox: auto
     theme:
-      - cosmo
-      #- neobrutalist.scss
+      light:
+        - cosmo
+        - book-theme.scss
+      dark:
+        - cosmo
+        - book-theme-dark.scss
     # Alternative themes: lux, flatly, sandstone, minty
     mermaid:
       theme: neutral  # Uses grayscale/minimal colors for black and white diagrams
@@ -451,9 +459,8 @@ format:
           <script src="/assets/js/generated-subdomain-redirects.js"></script>
           <!-- Feature flags for site-enhancements.js -->
           <meta name="dih-disable-features" content="cite,chat">
-          <!-- Chat FAB links to transmit.warondisease.org -->
-          <style>.chat-fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:var(--bs-primary,#2a6b4f);color:#fff;border:none;cursor:pointer;z-index:9998;box-shadow:0 4px 12px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s;text-decoration:none}.chat-fab:hover{transform:scale(1.08);box-shadow:0 6px 20px rgba(0,0,0,.35)}</style>
-          <a href="https://transmit.warondisease.org" class="chat-fab" aria-label="Talk with Wishonia" title="Talk to Wishonia"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></a>
+          <!-- Chat link registered in unified FAB by site-enhancements.js -->
+          <meta name="dih-chat-url" content="https://transmit.warondisease.org">
           <meta name="dih-hide-index-title" content="true">
           <!-- RSS feed discovery -->
           <link rel="alternate" type="application/rss+xml" title="How to End War and Disease" href="/assets/feed.xml">

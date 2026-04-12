@@ -308,15 +308,12 @@ def generate_variables_yml(
 
         # Generate _nounit variant if the unit produces visible text
         # Auto-detect: compare formatted output with and without unit
-        with_unit = format_parameter_value(central_value, unit, include_unit=True, ratio_suffix=False)
-        without_unit = format_parameter_value(central_value, unit, include_unit=False, ratio_suffix=False)
+        # Use ratio_suffix=True so ":1" and "x" suffixes are visible in with_unit
+        with_unit = format_parameter_value(central_value, unit, include_unit=True)
+        without_unit = format_parameter_value(central_value, unit, include_unit=False)
         if with_unit != without_unit:
-            # Unit produces visible text (e.g. "deaths", "years") - generate _nounit
-            if ci_bounds:
-                nounit_display = _format_ci_display(central_value, unit, ci_bounds[0], ci_bounds[1], include_unit=False)
-                nounit_value = ValueWithCI(value, nounit_display)
-            else:
-                nounit_value = value
+            # _nounit variant: bare number without CI (CIs stay on the base variant)
+            nounit_value = value
             nounit_html = generate_html_with_tooltip(param_name, nounit_value, comment, include_citation=include_inline_citation, include_unit=False)
             variables[f"{var_name}{NOUNIT_VARIABLE_SUFFIX}"] = nounit_html
 

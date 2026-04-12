@@ -2733,6 +2733,166 @@ NUCLEAR_OVERKILL_FACTOR = Parameter(
     latex_symbol=r"Overkill_{nuke}",
 )
 
+# Global nuclear weapons spending and apocalypse metrics
+GLOBAL_NUCLEAR_WEAPONS_SPENDING = Parameter(
+    92_000_000_000,
+    source_ref=ReferenceID.GLOBAL_NUCLEAR_WEAPON_MAINTENANCE_100B,
+    source_type="external",
+    confidence="high",
+    description="Annual global spending on nuclear weapons across all nine nuclear-armed "
+                "states. US: $51.5B, China: $11.8B, UK: $8.1B, Russia: $8.3B, France: $6.8B, "
+                "India: ~$2.7B, Israel: ~$1.2B, Pakistan: ~$1.1B, North Korea: ~$0.7B.",
+    display_name="Global Nuclear Weapons Spending",
+    unit="USD",
+    distribution="fixed",
+    keywords=["nuclear", "spending", "weapons", "arsenal", "annual", "ICAN"],
+    latex_symbol=r"S_{nuke}",
+)
+
+NUCLEAR_WINTER_WARHEAD_THRESHOLD = Parameter(
+    4_400,
+    source_ref=ReferenceID.NUKE_WINTER_150TG,
+    source_type="external",
+    confidence="medium",
+    description="Approximate number of warheads needed to trigger nuclear winter (150 Tg "
+                "soot), killing ~5 billion people from agricultural collapse. Based on Xia "
+                "et al. 2022, Nature Food, modeling a US-Russia exchange.",
+    display_name="Nuclear Winter Warhead Threshold",
+    unit="warheads",
+    distribution="uniform",
+    confidence_interval=(3_000, 6_000),
+    keywords=["nuclear", "winter", "warheads", "threshold", "soot", "famine"],
+    latex_symbol=r"W_{winter}",
+)
+
+GLOBAL_WARHEAD_COUNT = Parameter(
+    12_241,
+    source_ref=ReferenceID.WORLD_WARHEADS,
+    source_type="external",
+    confidence="high",
+    description="Total global nuclear warhead inventory across nine nuclear-armed states. "
+                "Includes deployed, reserve, and retired warheads awaiting dismantlement.",
+    display_name="Global Nuclear Warhead Count",
+    unit="warheads",
+    distribution="fixed",
+    keywords=["nuclear", "warheads", "arsenal", "global", "inventory", "FAS"],
+    latex_symbol=r"W_{global}",
+)
+
+NUCLEAR_WINTER_OVERKILL_FACTOR = Parameter(
+    12_241 / 4_400,
+    source_type=SourceType.CALCULATED,
+    confidence="medium",
+    description="How many times the global nuclear arsenal exceeds the threshold for "
+                "nuclear winter (~4,400 warheads for 150 Tg soot). The arsenal-based "
+                "overkill factor for the actual extinction mechanism.",
+    display_name="Nuclear Winter Overkill Factor",
+    unit="x",
+    formula="GLOBAL_WARHEAD_COUNT / NUCLEAR_WINTER_WARHEAD_THRESHOLD",
+    inputs=["GLOBAL_WARHEAD_COUNT", "NUCLEAR_WINTER_WARHEAD_THRESHOLD"],
+    compute=lambda ctx: ctx["GLOBAL_WARHEAD_COUNT"] / ctx["NUCLEAR_WINTER_WARHEAD_THRESHOLD"],
+    keywords=["nuclear", "winter", "overkill", "arsenal", "warheads"],
+    latex_symbol=r"Overkill_{winter}",
+)
+
+# Price of Apocalypse and Apocalypse Markup
+# The cost of triggering one nuclear winter, and the markup above it
+PRICE_OF_APOCALYPSE = Parameter(
+    92_000_000_000 / (12_241 / 4_400),
+    source_type=SourceType.CALCULATED,
+    confidence="medium",
+    description="The Price of Apocalypse: the annual cost of maintaining enough nuclear "
+                "warheads to trigger nuclear winter once (~4,400 warheads, killing ~5 billion "
+                "from agricultural collapse). Calculated as global nuclear spending divided "
+                "by the nuclear winter overkill factor.",
+    display_name="Price of Apocalypse (Minimum Viable Apocalypse)",
+    unit="USD",
+    formula="GLOBAL_NUCLEAR_WEAPONS_SPENDING / NUCLEAR_WINTER_OVERKILL_FACTOR",
+    inputs=["GLOBAL_NUCLEAR_WEAPONS_SPENDING", "NUCLEAR_WINTER_OVERKILL_FACTOR"],
+    compute=lambda ctx: ctx["GLOBAL_NUCLEAR_WEAPONS_SPENDING"] / ctx["NUCLEAR_WINTER_OVERKILL_FACTOR"],
+    keywords=["apocalypse", "price", "minimum", "nuclear", "winter", "cost"],
+    latex_symbol=r"P_{apocalypse}",
+)
+
+APOCALYPSE_MARKUP = Parameter(
+    GLOBAL_MILITARY_SPENDING_ANNUAL_2024 - (92_000_000_000 / (12_241 / 4_400)),
+    source_type=SourceType.CALCULATED,
+    confidence="medium",
+    description="The Apocalypse Markup: total military spending beyond the Price of "
+                "Apocalypse. The amount governments spend above what is needed to trigger "
+                "nuclear winter and end civilization once.",
+    display_name="Apocalypse Markup",
+    unit="USD",
+    formula="GLOBAL_MILITARY_SPENDING_ANNUAL_2024 - PRICE_OF_APOCALYPSE",
+    inputs=["GLOBAL_MILITARY_SPENDING_ANNUAL_2024", "PRICE_OF_APOCALYPSE"],
+    compute=lambda ctx: ctx["GLOBAL_MILITARY_SPENDING_ANNUAL_2024"] - ctx["PRICE_OF_APOCALYPSE"],
+    keywords=["apocalypse", "markup", "waste", "overkill", "redundant", "excess"],
+    latex_symbol=r"M_{apocalypse}",
+)
+
+APOCALYPSE_MARKUP_MULTIPLIER = Parameter(
+    GLOBAL_MILITARY_SPENDING_ANNUAL_2024 / (92_000_000_000 / (12_241 / 4_400)),
+    source_type=SourceType.CALCULATED,
+    confidence="medium",
+    description="How many times total military spending exceeds the Price of Apocalypse. "
+                "The markup multiplier on the cost of ending civilization.",
+    display_name="Apocalypse Markup Multiplier",
+    unit="x",
+    formula="GLOBAL_MILITARY_SPENDING_ANNUAL_2024 / PRICE_OF_APOCALYPSE",
+    inputs=["GLOBAL_MILITARY_SPENDING_ANNUAL_2024", "PRICE_OF_APOCALYPSE"],
+    compute=lambda ctx: ctx["GLOBAL_MILITARY_SPENDING_ANNUAL_2024"] / ctx["PRICE_OF_APOCALYPSE"],
+    keywords=["apocalypse", "markup", "multiplier", "ratio"],
+    latex_symbol=r"M_{apocalypse,x}",
+)
+
+# Bullet purchasing power (complements nuclear overkill with a more visceral metric)
+BULLET_COST_556_NATO = Parameter(
+    0.40,
+    source_ref=ReferenceID.NATO_556_AMMO_COST,
+    source_type="external",
+    confidence="medium",
+    description="Cost per round of 5.56x45mm NATO ammunition (military bulk procurement). "
+                "Based on U.S. military procurement contracts for M855 ball ammunition. "
+                "Civilian retail floor is ~$0.37; $0.40 is a conservative midpoint.",
+    display_name="Cost per 5.56mm NATO Round (Bulk)",
+    unit="USD",
+    distribution="uniform",
+    confidence_interval=(0.25, 0.60),
+    keywords=["bullet", "ammunition", "cost", "5.56", "NATO", "small arms", "round"],
+    latex_symbol=r"c_{bullet}",
+)
+
+BULLETS_FIRED_PER_KILL_IRAQ_AFGHANISTAN = Parameter(
+    250_000,
+    source_ref=ReferenceID.NATO_556_ROUNDS_PER_KILL,
+    source_type="external",
+    confidence="medium",
+    description="Rounds of small-arms ammunition fired per insurgent killed in Iraq and "
+                "Afghanistan. Based on GAO figures: ~6 billion rounds expended 2002-2005. "
+                "Calculated by military researcher John Pike of GlobalSecurity.org.",
+    display_name="Bullets Fired per Kill (Iraq/Afghanistan)",
+    unit="rounds",
+    distribution="fixed",
+    keywords=["bullets", "rounds", "per kill", "Iraq", "Afghanistan", "combat", "ammunition"],
+    latex_symbol=r"n_{rounds/kill}",
+)
+
+GLOBAL_BULLETS_PURCHASABLE_ANNUAL = Parameter(
+    GLOBAL_MILITARY_SPENDING_ANNUAL_2024 / BULLET_COST_556_NATO,
+    source_type=SourceType.CALCULATED,
+    confidence="medium",
+    description="Number of 5.56mm NATO rounds purchasable with the entire global military "
+                "budget at bulk procurement prices. Pure purchasing power calculation, "
+                "not a combat efficiency estimate.",
+    display_name="Bullets Purchasable with Global Military Budget",
+    unit="rounds",
+    formula="GLOBAL_MILITARY_SPENDING_ANNUAL_2024 / BULLET_COST_556_NATO",
+    inputs=["GLOBAL_MILITARY_SPENDING_ANNUAL_2024", "BULLET_COST_556_NATO"],
+    compute=lambda ctx: ctx["GLOBAL_MILITARY_SPENDING_ANNUAL_2024"] / ctx["BULLET_COST_556_NATO"],
+    keywords=["bullets", "purchasing power", "military budget", "ammunition", "rounds"],
+    latex_symbol=r"N_{bullets,yr}",
+)
+
 # Annual terrorism death risk
 ANNUAL_TERRORISM_DEATH_RISK_DENOMINATOR = Parameter(
     30_000_000,
@@ -2794,6 +2954,23 @@ GLOBAL_POPULATION_2024 = Parameter(
     keywords=["2024", "8.0b", "people", "worldwide", "citizens", "individuals", "inhabitants"],
     latex_symbol=r"Pop_{global}",  # LaTeX symbol for equations
 )  # UN World Population Prospects 2022
+
+# Bullets per person (depends on GLOBAL_POPULATION_2024 above)
+BULLETS_PER_PERSON_ANNUAL = Parameter(
+    GLOBAL_BULLETS_PURCHASABLE_ANNUAL / GLOBAL_POPULATION_2024,
+    source_type=SourceType.CALCULATED,
+    confidence="medium",
+    description="Number of bullets per person on Earth that could be purchased annually "
+                "with the global military budget. A purchasing power metric illustrating "
+                "the scale of military spending.",
+    display_name="Bullets Purchasable Per Person Per Year",
+    unit="rounds/person/year",
+    formula="GLOBAL_BULLETS_PURCHASABLE_ANNUAL / GLOBAL_POPULATION_2024",
+    inputs=["GLOBAL_BULLETS_PURCHASABLE_ANNUAL", "GLOBAL_POPULATION_2024"],
+    compute=lambda ctx: ctx["GLOBAL_BULLETS_PURCHASABLE_ANNUAL"] / ctx["GLOBAL_POPULATION_2024"],
+    keywords=["bullets", "per person", "per capita", "overkill", "purchasing power"],
+    latex_symbol=r"n_{bullets/person}",
+)
 
 GLOBAL_AVG_INCOME_2025 = Parameter(
     GLOBAL_GDP_2025 / GLOBAL_POPULATION_2024,

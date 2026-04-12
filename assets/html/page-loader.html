@@ -7,6 +7,21 @@
 
 <div id="progress-bar" style="display: none;"></div>
 
+<!-- Non-blocking calc page loader (top-right card) -->
+<div id="calc-loader" style="display: none;">
+  <div class="calc-loader-row">
+    <span class="hash-loader-spinner" aria-hidden="true"></span>
+    <span class="calc-loader-text" id="calc-loader-text">Loading a bajillion calculations...</span>
+  </div>
+  <div class="calc-loader-death-row">
+    <span class="calc-loader-skull" aria-hidden="true">&#9760;</span>
+    <span id="calc-death-count">0</span> people died of preventable disease while you waited
+  </div>
+  <div class="calc-loader-bar-wrap">
+    <div id="calc-loader-bar-fill"></div>
+  </div>
+</div>
+
 <style>
   @keyframes hash-loader-spin {
     to { transform: rotate(360deg); }
@@ -70,6 +85,86 @@
       padding: 9px 12px;
     }
   }
+
+  /* Calc page non-blocking loader card */
+  #calc-loader {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    z-index: 9998;
+    max-width: min(380px, calc(100vw - 28px));
+    padding: 12px 16px;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.92);
+    color: #f8fafc;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
+    backdrop-filter: blur(12px);
+    font-size: 13px;
+    line-height: 1.4;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  #calc-loader.hiding {
+    opacity: 0;
+    transform: translateY(-12px);
+    pointer-events: none;
+  }
+  .calc-loader-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .calc-loader-row .hash-loader-spinner {
+    flex: 0 0 auto;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(248, 250, 252, 0.28);
+    border-top-color: #f8fafc;
+    border-radius: 50%;
+    animation: hash-loader-spin 0.9s linear infinite;
+  }
+  .calc-loader-text {
+    transition: opacity 0.3s ease;
+  }
+  .calc-loader-death-row {
+    font-size: 12px;
+    color: #fca5a5;
+    padding: 6px 0;
+    border-top: 1px solid rgba(148, 163, 184, 0.15);
+    margin-bottom: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .calc-loader-skull {
+    margin-right: 4px;
+  }
+  #calc-death-count {
+    font-weight: 700;
+    font-size: 14px;
+    color: #ef4444;
+    font-variant-numeric: tabular-nums;
+  }
+  .calc-loader-bar-wrap {
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(148, 163, 184, 0.15);
+    overflow: hidden;
+  }
+  #calc-loader-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ef4444, #f97316);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+  @media (max-width: 768px) {
+    #calc-loader {
+      top: 10px;
+      right: 10px;
+      left: 10px;
+      max-width: none;
+    }
+  }
 </style>
 
 <script>
@@ -80,6 +175,10 @@
   var hasHashTarget = !!(window.location.hash && window.location.hash.length > 1);
 
   startProgressBar();
+
+  if (isParametersPage) {
+    startCalcLoader();
+  }
 
   if (isParametersPage && hasHashTarget) {
     startHashHint();
@@ -150,6 +249,94 @@
       document.addEventListener('DOMContentLoaded', finish, { once: true });
     } else {
       finish();
+    }
+  }
+
+  function startCalcLoader() {
+    var loader = document.getElementById('calc-loader');
+    if (!loader) return;
+
+    var textEl = document.getElementById('calc-loader-text');
+    var deathCount = document.getElementById('calc-death-count');
+    var barFill = document.getElementById('calc-loader-bar-fill');
+    var DEATHS_PER_SECOND = 104 / 60; // 104 deaths/minute from disease
+    var startTime = Date.now();
+
+    var messages = [
+      'Loading a bajillion calculations...',
+      'Thank you for your patience.',
+      'Your call is very important to us.',
+      '647 parameters. Monte Carlo sims. Tornado diagrams. The works.',
+      'Still crunching numbers...',
+      'A representative will be with you shortly.',
+      'Please do not hang up.',
+      'Meanwhile, the death counter keeps ticking.',
+      'Almost there. Probably.',
+      'Have you considered that war is expensive?'
+    ];
+    var msgIndex = 0;
+
+    loader.style.display = 'block';
+
+    // Rotate messages every 3 seconds
+    var msgInterval = setInterval(function() {
+      msgIndex = (msgIndex + 1) % messages.length;
+      textEl.style.opacity = '0';
+      setTimeout(function() {
+        textEl.textContent = messages[msgIndex];
+        textEl.style.opacity = '1';
+      }, 300);
+    }, 3000);
+
+    // Tick death counter
+    var counterInterval = setInterval(function() {
+      var elapsed = (Date.now() - startTime) / 1000;
+      var deaths = Math.floor(elapsed * DEATHS_PER_SECOND);
+      deathCount.textContent = deaths.toLocaleString();
+    }, 100);
+
+    // Progress bar
+    var progress = 0;
+    var progressInterval = setInterval(function() {
+      if (progress < 40) {
+        progress += 2;
+      } else if (progress < 70) {
+        progress += 0.8;
+      } else if (progress < 90) {
+        progress += 0.15;
+      }
+      barFill.style.width = progress + '%';
+    }, 200);
+
+    function dismiss() {
+      clearInterval(progressInterval);
+      barFill.style.width = '100%';
+
+      // Show final death count
+      var finalElapsed = (Date.now() - startTime) / 1000;
+      var finalDeaths = Math.floor(finalElapsed * DEATHS_PER_SECOND);
+      deathCount.textContent = finalDeaths.toLocaleString();
+
+      clearInterval(msgInterval);
+      textEl.style.opacity = '0';
+      setTimeout(function() {
+        textEl.textContent = finalDeaths + ' people. That\u2019s why this page exists.';
+        textEl.style.opacity = '1';
+      }, 300);
+
+      setTimeout(function() {
+        clearInterval(counterInterval);
+        loader.classList.add('hiding');
+        setTimeout(function() {
+          loader.style.display = 'none';
+        }, 400);
+      }, 3000);
+    }
+
+    if (document.readyState === 'complete') {
+      dismiss();
+    } else {
+      window.addEventListener('load', dismiss, { once: true });
     }
   }
 })();

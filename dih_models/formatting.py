@@ -90,35 +90,29 @@ def format_parameter_value(param: Union[float, int, str, "Parameter"], unit: str
         elif abs_raw >= 1e12:  # Trillions
             scaled = raw_dollars / 1e12
             if abs(scaled) >= 100:
-                formatted_num = f"${scaled:.0f}T"
+                formatted_num = f"${scaled:.0f} trillion"
             elif abs(scaled) >= 10:
-                formatted_num = f"${clean_number(f'{scaled:.1f}')}T"
+                formatted_num = f"${clean_number(f'{scaled:.1f}')} trillion"
             else:
-                formatted_num = f"${clean_number(f'{scaled:.2f}')}T"
+                formatted_num = f"${clean_number(f'{scaled:.2f}')} trillion"
         elif abs_raw >= 1e9:  # Billions
             scaled = raw_dollars / 1e9
             if abs(scaled) >= 100:
-                formatted_num = f"${scaled:.0f}B"
+                formatted_num = f"${scaled:.0f} billion"
             elif abs(scaled) >= 10:
-                formatted_num = f"${clean_number(f'{scaled:.1f}')}B"
+                formatted_num = f"${clean_number(f'{scaled:.1f}')} billion"
             else:
-                formatted_num = f"${clean_number(f'{scaled:.2f}')}B"
+                formatted_num = f"${clean_number(f'{scaled:.2f}')} billion"
         elif abs_raw >= 1e6:  # Millions
             scaled = raw_dollars / 1e6
             if abs(scaled) >= 100:
-                formatted_num = f"${scaled:.0f}M"
+                formatted_num = f"${scaled:.0f} million"
             elif abs(scaled) >= 10:
-                formatted_num = f"${clean_number(f'{scaled:.1f}')}M"
+                formatted_num = f"${clean_number(f'{scaled:.1f}')} million"
             else:
-                formatted_num = f"${clean_number(f'{scaled:.2f}')}M"
-        elif abs_raw >= 1e3:  # Thousands
-            scaled = raw_dollars / 1e3
-            if abs(scaled) >= 100:
-                formatted_num = f"${scaled:.0f}K"
-            elif abs(scaled) >= 10:
-                formatted_num = f"${clean_number(f'{scaled:.1f}')}K"
-            else:
-                formatted_num = f"${clean_number(f'{scaled:.2f}')}K"
+                formatted_num = f"${clean_number(f'{scaled:.2f}')} million"
+        elif abs_raw >= 1e3:  # Thousands: use comma formatting up to millions
+            formatted_num = f"${raw_dollars:,.0f}"
         elif abs_raw >= 10:
             formatted_num = f"${raw_dollars:.0f}"
         elif abs_raw >= 1:
@@ -152,24 +146,26 @@ def format_parameter_value(param: Union[float, int, str, "Parameter"], unit: str
         return f"{pct_formatted}%"
 
     elif is_ratio:
-        # Format as X:1 (e.g., 847,733:1 for ROI)
+        # Format ratios using full words for prose readability
         if abs(value) >= 1e6:
             scaled = value / 1e6
             if abs(scaled) >= 100:
-                ratio_formatted = f"{scaled:.0f}M"
+                ratio_formatted = f"{scaled:.0f} million"
             elif abs(scaled) >= 10:
-                ratio_formatted = clean_number(f"{scaled:.1f}M")
+                ratio_formatted = f"{clean_number(f'{scaled:.1f}')} million"
             else:
-                ratio_formatted = clean_number(f"{scaled:.2f}M")
-        elif abs(value) >= 1e3:
+                ratio_formatted = f"{clean_number(f'{scaled:.2f}')} million"
+        elif abs(value) >= 1e4:
+            # 10,000+ use "thousand" for readability
             scaled = value / 1e3
             if abs(scaled) >= 100:
-                ratio_formatted = f"{scaled:.0f}k"
+                ratio_formatted = f"{scaled:.0f} thousand"
             elif abs(scaled) >= 10:
-                ratio_formatted = clean_number(f"{scaled:.1f}k")
+                ratio_formatted = f"{clean_number(f'{scaled:.1f}')} thousand"
             else:
-                ratio_formatted = clean_number(f"{scaled:.2f}k")
+                ratio_formatted = f"{clean_number(f'{scaled:.2f}')} thousand"
         elif abs(value) >= 100:
+            # Under 10,000: use comma-formatted integers (e.g. 3,070)
             ratio_formatted = f"{value:,.0f}"
         elif abs(value) >= 10:
             ratio_formatted = clean_number(f"{value:.1f}")
@@ -177,7 +173,9 @@ def format_parameter_value(param: Union[float, int, str, "Parameter"], unit: str
             ratio_formatted = clean_number(f"{value:.2f}")
         else:
             ratio_formatted = clean_number(f"{value:.3g}")
-        return f"{ratio_formatted}:1" if ratio_suffix else ratio_formatted
+        if include_unit and ratio_suffix:
+            return f"{ratio_formatted}:1"
+        return ratio_formatted
 
     elif is_multiplier:
         # Format as Xx (e.g., 22x for multipliers)
@@ -195,7 +193,9 @@ def format_parameter_value(param: Union[float, int, str, "Parameter"], unit: str
             multiplier_formatted = clean_number(f"{value:.2f}")
         else:
             multiplier_formatted = clean_number(f"{value:.3g}")
-        return f"{multiplier_formatted}x"
+        if include_unit:
+            return f"{multiplier_formatted}x"
+        return multiplier_formatted
 
     elif unit_check == "year" and 1900 <= value <= 2200:
         # Calendar years: display as plain integer, no auto-scaling
@@ -228,7 +228,7 @@ def format_parameter_value(param: Union[float, int, str, "Parameter"], unit: str
         elif abs_raw >= 1e6:
             scaled = raw_val / 1e6
             suffix = " million"
-        elif abs_raw >= 1e3:
+        elif abs_raw >= 1e5:
             scaled = raw_val / 1e3
             suffix = " thousand"
         else:
@@ -246,7 +246,7 @@ def format_parameter_value(param: Union[float, int, str, "Parameter"], unit: str
         else:
             # No suffix, small number — also use 3 sig figs
             if abs_raw >= 100:
-                formatted_num = f"{raw_val:.0f}"             # 565 (3+ sig figs)
+                formatted_num = f"{raw_val:,.0f}"            # 1,750 or 565 (comma-formatted)
             elif abs_raw >= 10:
                 formatted_num = f"{raw_val:.1f}"             # 10.7 (3 sig figs)
             elif abs_raw >= 1:

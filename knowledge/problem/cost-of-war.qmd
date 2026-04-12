@@ -69,7 +69,7 @@ If weapons were a stock, here is the prospectus:
 - Competitive dynamics: Makes neighbors buy the same product.
 - Success condition: Only "works" if it is never used (if you use nuclear weapons, you have already failed).
 
-No rational investor would touch this. You put trillions into it annually.
+No rational investor would touch this. You put trillions into it annually. Enough to buy enough bullets to murder every man, woman, and child on Earth {{< var bullets_per_person_annual_nounit >}} times. Every year.
 
 ![You buy weapons because they have weapons. They buy weapons because you have weapons. Everyone has weapons. Nobody is safer. You're very good at circles.](/assets/images/cost-of-war/cost-of-war-section-risk-factors-bw-academic.jpg)
 
@@ -79,11 +79,15 @@ Military money sits in a warehouse, rusts, becomes obsolete, and has negative ne
 
 ![Normal investment: money becomes factories, factories make products, products make money. Military investment: money becomes bombs, bombs make rubble, rubble makes nothing. You prefer the second one.](/assets/images/cost-of-war/cost-of-war-section-the-dead-capital-problem-bw-academic.jpg)
 
+The global economy is a factory. Eight billion workers, millions of machines, supply chains threading through every country on Earth, producing goods and services and wealth your ancestors could not have imagined. War is walking into that factory with a sledgehammer and smashing the machines. You destroy an oil refinery in the Middle East and fuel prices spike in Ohio. You bomb a port in the Red Sea and a car factory in Germany stops production because the parts are on a ship that can no longer dock. You hit an electrical grid and the hospitals go dark and the server farms go offline and the stock market drops because investors can see, in real time, the global machine becoming less efficient. Every missile that hits infrastructure is a sledgehammer blow to a machine that feeds you. The stock market does not drop because traders are emotional. It drops because the machine just lost a piece and everyone who depends on the machine (which is everyone) is now slightly poorer.
+
 President Eisenhower (who defeated the Nazis) explained this in 1953:
 
 *"Every gun that is made, every warship launched, every rocket fired signifies, in the final sense, a theft from those who hunger and are not fed, those who are cold and are not clothed."*
 
 This is not pacifism. This is accounting.
+
+The military budget is not protecting the factory. It is the sledgehammer. The net return on US military hegemony is **-$674 billion to -$1.38 trillion per year**. The only quantifiable benefit ($20-200 billion in dollar reserve privilege) covers 2-23% of the cost. For the full cost-benefit ledger, including why the Navy's claimed 1:30 return fails scrutiny, why regime change systematically increases civil war, and why Switzerland achieves better outcomes for $7 billion than the US achieves for $886 billion, see [The Cost-Benefit Analysis of Global Hegemony](../appendix/cost-benefit-of-hegemony.qmd).
 
 ![A tractor builds value forever. A tank destroys value once. You bought more tanks.](/assets/images/cost-of-war/cost-of-war-section-economic-vs-military-capital-flow-bw-academic.jpg)
 
@@ -281,7 +285,7 @@ The United States alone (one country, on one planet, in one unremarkable solar s
 
 The total tab for everyone, across all of recorded history, is approximately **$180 trillion** in constant 2024 dollars.^[This estimate is built from multiple sources. SIPRI data from 1988-2024 sums to approximately $65-72 trillion in constant dollars [@sipri2024; @sipri-milex-2024]. The Cold War era (1946-1987) adds roughly $50-70 trillion, reconstructed from US spending data (the US accounted for ~37-40% of global totals) and CIA estimates of Soviet expenditure. World War II cost all belligerents approximately $23 trillion in 2024 dollars [@harrison-economics-wwii], World War I approximately $7 trillion, with another $3-5 trillion for interwar military budgets. The 19th century adds roughly $3 trillion (Napoleonic Wars, American Civil War, colonial conflicts, routine garrison spending). Pre-1800 military spending, estimated via GDP-share equivalence using Maddison Project historical GDP data, adds $4-20 trillion with enormous uncertainty; the Roman Empire alone spent an estimated $1-2 trillion over five centuries. The range is $150-225 trillion; $180 trillion is the central estimate. Roughly 75% of the total was spent after 1945, because global GDP grew 100-fold since 1900 while military burdens stayed at 2-5% of output.]
 
-Three-quarters of that was spent after 1945, during what your historians call "the long peace." It is the most expensive peace in history. The 2024 bill alone hit a record {{< var global_military_spending_annual_2024 >}}, up 9.4% in a single year, the steepest increase SIPRI has ever recorded [@sipri-milex-2024]. You are not winding down. You are warming up.
+Three-quarters of that was spent after 1945, during what your historians call "the long peace." It is the most expensive peace in history. The United States alone now spends {{< var us_military_spending_current_vs_prewar_multiplier >}} what it spent in 1939, in constant 2024 dollars, to defend itself against threats meaningfully smaller than Adolf Hitler. The 2024 bill alone hit a record {{< var global_military_spending_annual_2024 >}}, up 9.4% in a single year, the steepest increase SIPRI has ever recorded [@sipri-milex-2024]. You are not winding down. You are warming up.
 
 To put $180 trillion in perspective: one year of modern military spending ($2.7 trillion) exceeds the entire military expenditure of the Roman Empire across five centuries. And $180 trillion divided by {{< var global_government_clinical_trials_spending_annual >}} per year equals **40,000 years** of government-funded clinical trials. Your species has been running clinical trials for about 80 years. You could have funded every clinical trial you will ever run, for the next 500 lifetimes, with the money you spent killing each other. Instead, you have a very large collection of spent shell casings and 6,650 diseases with zero FDA-approved treatments.
 
@@ -306,7 +310,7 @@ Add another **{{< var war_environmental_destruction_since_1900 >}} in cumulative
 
 ### The Brain Drain: Professionals Killed Since 1900
 
-Approximately {{< var war_deaths_since_1900 >}} people have been killed by wars, genocides, and policy-induced famines since 1900.^[Built from non-overlapping categories: Rummel's democide estimate of 264M (government murder of civilians, 1900-present, which explicitly excludes battle deaths [@rummel-death-by-government]) + 39M military battle deaths + 30M collateral civilian war deaths [@necrometrics-20th-century; @leitenberg-deaths-wars-2006] - ~25M overlap adjustment (some civilian massacres counted by both Rummel and war casualty tallies) = ~310M. Range: 200M (White's narrow definition) to 340M (Rummel high + all military).] That is a number. Here is what is inside the number.
+Approximately {{< var war_deaths_since_1900_nounit >}} people have been killed by wars, genocides, and policy-induced famines since 1900.^[Built from non-overlapping categories: Rummel's democide estimate of 264M (government murder of civilians, 1900-present, which explicitly excludes battle deaths [@rummel-death-by-government]) + 39M military battle deaths + 30M collateral civilian war deaths [@necrometrics-20th-century; @leitenberg-deaths-wars-2006] - ~25M overlap adjustment (some civilian massacres counted by both Rummel and war casualty tallies) = ~310M. Range: 200M (White's narrow definition) to 340M (Rummel high + all military).] That is a number. Here is what is inside the number.
 
 Scientists and engineers make up about 5% of the modern labor force [@nsf-se-workforce-2018]. In the early-to-mid 20th century, the share was lower (roughly 0.1% scientists, 0.2% engineers, 0.3% physicians, 0.4% nurses, 1% teachers). Apply those workforce percentages to {{< var war_deaths_since_1900_nounit >}} dead:
 

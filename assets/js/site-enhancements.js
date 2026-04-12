@@ -4,14 +4,16 @@
  * Features:
  * 1. Auto-expand collapsed callouts when navigating to hash anchors
  * 2. Smooth scroll to hash targets with visual highlight
- * 3. Toggle to show/hide uncertainty parameters (95% CI ranges)
- * 4. Dark mode toggle with localStorage persistence
- * 5. Copy citation button (BibTeX format)
- * 6. Back to top button
+ * 3. Unified FAB with spring-out sub-buttons:
+ *    - Chat (Wishonia, registered by external chat-widget.js via window.dihFAB)
+ *    - Copy citation (BibTeX)
+ *    - Show/hide confidence intervals
+ *    - Dark mode toggle
+ *    - Back to top
  *
  * Note: Page loader is handled separately in page-loader.html
  *
- * Version: 4.0.0
+ * Version: 5.2.0
  */
 
 (function() {
@@ -170,13 +172,131 @@
   }
 
   // ========================================
+  // UNIFIED FAB (Floating Action Button)
+  // ========================================
+
+  var fabOpen = false;
+  var fabContainer = null;
+  var fabActions = []; // ordered list of {id, el} for sub-buttons
+
+  function createUnifiedFAB() {
+    if (document.getElementById('dih-fab')) return;
+
+    fabContainer = document.createElement('div');
+    fabContainer.id = 'dih-fab';
+    fabContainer.className = 'dih-fab';
+
+    var main = document.createElement('button');
+    main.className = 'dih-fab-main';
+    main.type = 'button';
+    main.setAttribute('aria-label', 'Toggle tools menu');
+    main.title = 'Tools';
+    main.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>';
+    main.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleFAB();
+    });
+
+    fabContainer.appendChild(main);
+    document.body.appendChild(fabContainer);
+
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+      if (fabOpen && !fabContainer.contains(e.target)) {
+        closeFAB();
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && fabOpen) closeFAB();
+    });
+  }
+
+  function toggleFAB() {
+    fabOpen ? closeFAB() : openFAB();
+  }
+
+  function openFAB() {
+    fabOpen = true;
+    fabContainer.classList.add('dih-fab-open');
+  }
+
+  function closeFAB() {
+    fabOpen = false;
+    fabContainer.classList.remove('dih-fab-open');
+  }
+
+  /**
+   * Add a sub-action to the FAB. Called internally and by external scripts (e.g. chat widget).
+   * @param {string} id - unique id for the action
+   * @param {string} label - tooltip text
+   * @param {string} icon - HTML for the icon (emoji or SVG)
+   * @param {Function} onClick - click handler
+   * @param {Object} [opts] - { order: number (lower = closer to main button), closeFabOnClick: bool }
+   * @returns {HTMLElement} the created sub-button
+   */
+  function addFABAction(id, label, icon, onClick, opts) {
+    opts = opts || {};
+    if (document.getElementById('dih-fab-' + id)) {
+      return document.getElementById('dih-fab-' + id);
+    }
+
+    var btn = document.createElement('button');
+    btn.id = 'dih-fab-' + id;
+    btn.className = 'dih-fab-action';
+    btn.type = 'button';
+    btn.title = label;
+    btn.setAttribute('aria-label', label);
+    btn.innerHTML = '<span class="dih-fab-action-icon">' + icon + '</span><span class="dih-fab-action-label">' + label + '</span>';
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      onClick(e);
+      if (opts.closeFabOnClick !== false) closeFAB();
+    });
+
+    var order = opts.order != null ? opts.order : 50;
+    btn.setAttribute('data-fab-order', order);
+
+    // Higher-order actions sit farther from the gear (visually higher in the
+    // stack); lower-order actions end up closer to it. With flex-direction:
+    // column, that means higher-order = earlier in DOM, lower-order = later
+    // (just before the main button, which is always the last child).
+    var inserted = false;
+    for (var i = 0; i < fabActions.length; i++) {
+      var existingOrder = parseInt(fabActions[i].el.getAttribute('data-fab-order'), 10);
+      if (order > existingOrder) {
+        fabContainer.insertBefore(btn, fabActions[i].el);
+        fabActions.splice(i, 0, { id: id, el: btn });
+        inserted = true;
+        break;
+      }
+    }
+    if (!inserted) {
+      // Fallback: insert just before the main button — closest to the gear.
+      var mainBtn = fabContainer.querySelector('.dih-fab-main');
+      fabContainer.insertBefore(btn, mainBtn);
+      fabActions.push({ id: id, el: btn });
+    }
+
+    return btn;
+  }
+
+  // Expose global API for external scripts (chat widget)
+  window.dihFAB = {
+    addAction: addFABAction,
+    open: function() { openFAB(); },
+    close: function() { closeFAB(); },
+    toggle: function() { toggleFAB(); }
+  };
+
+  // ========================================
   // UNCERTAINTY TOGGLE
   // ========================================
 
   var STORAGE_KEY = 'dih-hide-uncertainty';
 
   function createUncertaintyToggle() {
-    // Check for parameter links with CI text in content (not title attribute)
     var paramLinks = document.querySelectorAll('a.parameter-link');
     var hasParameterWithCI = Array.from(paramLinks).some(function(link) {
       return link.textContent.includes('95% CI');
@@ -185,41 +305,31 @@
                              document.querySelector('.tippy-content') ||
                              document.body.textContent.includes('95% CI');
 
-    if (!hasUncertaintyData) {
-      return;
-    }
+    if (!hasUncertaintyData) return;
 
-    if (document.getElementById('uncertainty-toggle')) {
-      return;
-    }
-
-    var toggle = document.createElement('button');
-    toggle.id = 'uncertainty-toggle';
-    toggle.type = 'button';
-    toggle.innerHTML = '<span class="toggle-icon">📊</span><span class="toggle-text">Show CI</span>';
-    toggle.title = 'Toggle visibility of 95% confidence intervals';
-
-    // Default to hidden; only show if user has explicitly toggled them on
+    // Apply stored preference immediately
     var isShown = localStorage.getItem(STORAGE_KEY) === 'false';
     if (!isShown) {
       document.body.classList.add('hide-uncertainty');
-      toggle.classList.add('ci-hidden');
-      toggle.querySelector('.toggle-text').textContent = 'Show CI';
-    } else {
-      toggle.querySelector('.toggle-text').textContent = 'Hide CI';
     }
 
-    toggle.addEventListener('click', function() {
-      var nowHidden = document.body.classList.toggle('hide-uncertainty');
-      toggle.classList.toggle('ci-hidden', nowHidden);
-      toggle.querySelector('.toggle-text').textContent = nowHidden ? 'Show CI' : 'Hide CI';
-      localStorage.setItem(STORAGE_KEY, nowHidden);
-      processUncertaintyText(nowHidden);
-    });
+    var ciHidden = !isShown;
 
-    document.body.appendChild(toggle);
+    addFABAction('ci-toggle',
+      ciHidden ? 'Show confidence intervals' : 'Hide confidence intervals',
+      '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 5-10"/></svg>',
+      function() {
+        ciHidden = document.body.classList.toggle('hide-uncertainty');
+        localStorage.setItem(STORAGE_KEY, ciHidden);
+        processUncertaintyText(ciHidden);
+        var btn = document.getElementById('dih-fab-ci-toggle');
+        if (btn) btn.title = ciHidden ? 'Show confidence intervals' : 'Hide confidence intervals';
+        if (btn) btn.querySelector('.dih-fab-action-label').textContent = ciHidden ? 'Show confidence intervals' : 'Hide confidence intervals';
+      },
+      { order: 30, closeFabOnClick: false }
+    );
 
-    if (isHidden) {
+    if (ciHidden) {
       processUncertaintyText(true);
     }
   }
@@ -260,44 +370,13 @@
     }
   }
 
-  // ========================================
-  // DARK MODE TOGGLE
-  // ========================================
-
-  var DARK_MODE_KEY = 'dih-dark-mode';
-
-  function createDarkModeToggle() {
-    if (document.getElementById('dark-mode-toggle')) {
-      return;
-    }
-
-    var toggle = document.createElement('button');
-    toggle.id = 'dark-mode-toggle';
-    toggle.type = 'button';
-    toggle.innerHTML = '<span class="toggle-icon">🌙</span>';
-    toggle.title = 'Toggle dark mode';
-
-    var isDark = localStorage.getItem(DARK_MODE_KEY) === 'true';
-    if (isDark) {
-      document.documentElement.classList.add('dark-mode');
-      toggle.innerHTML = '<span class="toggle-icon">☀️</span>';
-    }
-
-    toggle.addEventListener('click', function() {
-      var nowDark = document.documentElement.classList.toggle('dark-mode');
-      toggle.innerHTML = nowDark ? '<span class="toggle-icon">☀️</span>' : '<span class="toggle-icon">🌙</span>';
-      localStorage.setItem(DARK_MODE_KEY, nowDark);
-    });
-
-    document.body.appendChild(toggle);
-  }
+  // Dark mode is now handled by Quarto's built-in light/dark theme toggle (see _quarto-manual.yml)
 
   // ========================================
   // COPY CITATION BUTTON
   // ========================================
 
   function createCopyCitationButton() {
-    // Only create on pages with DOI metadata
     var doiMeta = document.querySelector('meta[name="citation_doi"]') ||
                   document.querySelector('meta[name="DC.identifier"]');
     var titleMeta = document.querySelector('meta[name="citation_title"]') ||
@@ -306,68 +385,43 @@
     var authorMeta = document.querySelector('meta[name="citation_author"]') ||
                      document.querySelector('meta[name="author"]');
 
-    // Skip if no meaningful citation data
-    if (!titleMeta) {
-      return;
-    }
+    if (!titleMeta) return;
 
-    if (document.getElementById('copy-citation-btn')) {
-      return;
-    }
+    addFABAction('cite', 'Copy citation (BibTeX)',
+      '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
+      function() {
+        var title = titleMeta.content || titleMeta.textContent || 'Untitled';
+        var author = authorMeta ? (authorMeta.content || 'Unknown') : 'Sinn, Mike P.';
+        var doi = doiMeta ? doiMeta.content : '';
+        var url = window.location.href;
+        var year = new Date().getFullYear();
 
-    var btn = document.createElement('button');
-    btn.id = 'copy-citation-btn';
-    btn.type = 'button';
-    btn.innerHTML = '<span class="btn-icon">📋</span><span class="btn-text">Cite</span>';
-    btn.title = 'Copy citation (BibTeX)';
+        var key = title.toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-|-$/g, '')
+          .substring(0, 30);
 
-    btn.addEventListener('click', function() {
-      var title = titleMeta.content || titleMeta.textContent || 'Untitled';
-      var author = authorMeta ? (authorMeta.content || 'Unknown') : 'Sinn, Mike P.';
-      var doi = doiMeta ? doiMeta.content : '';
-      var url = window.location.href;
-      var year = new Date().getFullYear();
+        var bibtex = '@article{' + key + '-' + year + ',\n' +
+          '  title     = {' + title + '},\n' +
+          '  author    = {' + author + '},\n' +
+          '  year      = {' + year + '},\n' +
+          (doi ? '  doi       = {' + doi + '},\n' : '') +
+          '  url       = {' + url + '}\n' +
+          '}';
 
-      // Generate citation key from title
-      var key = title.toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-|-$/g, '')
-        .substring(0, 30);
-
-      var bibtex = '@article{' + key + '-' + year + ',\n' +
-        '  title     = {' + title + '},\n' +
-        '  author    = {' + author + '},\n' +
-        '  year      = {' + year + '},\n' +
-        (doi ? '  doi       = {' + doi + '},\n' : '') +
-        '  url       = {' + url + '}\n' +
-        '}';
-
-      navigator.clipboard.writeText(bibtex).then(function() {
-        var originalText = btn.innerHTML;
-        btn.innerHTML = '<span class="btn-icon">✓</span><span class="btn-text">Copied!</span>';
-        btn.classList.add('copied');
-        setTimeout(function() {
-          btn.innerHTML = originalText;
-          btn.classList.remove('copied');
-        }, 2000);
-      }).catch(function() {
-        // Fallback for older browsers
-        var textarea = document.createElement('textarea');
-        textarea.value = bibtex;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-        btn.innerHTML = '<span class="btn-icon">✓</span><span class="btn-text">Copied!</span>';
-        setTimeout(function() {
-          btn.innerHTML = '<span class="btn-icon">📋</span><span class="btn-text">Cite</span>';
-        }, 2000);
-      });
-    });
-
-    document.body.appendChild(btn);
+        navigator.clipboard.writeText(bibtex).then(function() {
+          var btn = document.getElementById('dih-fab-cite');
+          if (btn) {
+            var origLabel = btn.querySelector('.dih-fab-action-label').textContent;
+            btn.querySelector('.dih-fab-action-label').textContent = 'Copied!';
+            setTimeout(function() {
+              btn.querySelector('.dih-fab-action-label').textContent = origLabel;
+            }, 2000);
+          }
+        });
+      },
+      { order: 20 }
+    );
   }
 
   // ========================================
@@ -429,34 +483,31 @@
   // ========================================
 
   function createBackToTopButton() {
-    if (document.getElementById('back-to-top')) {
-      return;
-    }
+    addFABAction('top', 'Back to top',
+      '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>',
+      function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+      { order: 50 }
+    );
+  }
 
-    var btn = document.createElement('button');
-    btn.id = 'back-to-top';
-    btn.type = 'button';
-    btn.innerHTML = '↑';
-    btn.title = 'Back to top';
+  // ========================================
+  // CHAT LINK (via meta tag, no embedded widget)
+  // ========================================
 
-    btn.addEventListener('click', function() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
+  function createChatLink() {
+    var meta = document.querySelector('meta[name="dih-chat-url"]');
+    if (!meta || !meta.content) return;
+    var chatUrl = meta.content;
 
-    function toggleVisibility() {
-      if (window.pageYOffset > 300) {
-        btn.classList.add('visible');
-      } else {
-        btn.classList.remove('visible');
-      }
-    }
-
-    window.addEventListener('scroll', toggleVisibility, { passive: true });
-    document.body.appendChild(btn);
-    toggleVisibility();
+    addFABAction('chat', 'Argue with Wishonia',
+      '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>',
+      function() {
+        window.open(chatUrl, '_blank', 'noopener');
+      },
+      { order: 10 }
+    );
   }
 
   // ========================================
@@ -500,10 +551,11 @@
 
   function onPageReady() {
     expandHashTarget();
+    createUnifiedFAB();
+    //createChatLink();
     if (!isFeatureDisabled('ci-toggle')) createUncertaintyToggle();
     if (!isFeatureDisabled('cite')) createCopyCitationButton();
     if (!isFeatureDisabled('share')) createShareBar();
-    createDarkModeToggle();
     createBackToTopButton();
   }
 

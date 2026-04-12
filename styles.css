@@ -12,10 +12,9 @@
     --book-light: #f9f8f3;       /* Light cream */
 }
 
-/* Base Typography - Book-like */
+/* Base Typography - Book-like
+   (background-color/color come from Bootstrap via book-theme.scss $body-bg/$body-color) */
 body {
-    background-color: var(--book-bg);
-    color: var(--book-text);
     font-family: 'EB Garamond', 'Garamond', 'Georgia', serif;
     font-size: 19px;
     line-height: 1.7;
@@ -106,7 +105,7 @@ main.content {
 
 /* Cards - Minimal and Elegant */
 .card {
-    background-color: #fff;
+    background-color: var(--book-bg);
     border: 1px solid var(--book-border);
     padding: 2rem;
     margin-bottom: 2rem;
@@ -457,7 +456,7 @@ nav a:hover,
     text-align: center;
     margin: 3rem 0;
     padding: 2rem 0;
-    background-color: #fff;
+    background-color: var(--book-bg);
     border: 1px solid var(--book-border);
     border-radius: 2px;
 }
@@ -858,71 +857,166 @@ nav.quarto-page-breadcrumbs ol.breadcrumb li a {
 }
 
 /* ==========================================
-   CONFIDENCE INTERVAL TOGGLE BUTTON
+   UNIFIED FLOATING ACTION BUTTON (FAB)
    ========================================== */
 
-/* Floating toggle button - bottom right corner */
-#uncertainty-toggle {
+.dih-fab {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 1000;
+    z-index: 9998;
     display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    background-color: var(--book-bg, #ffffff);
-    border: 1px solid var(--book-border, #d4c5b9);
-    border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--book-text, #2a2a2a);
-    transition: all 0.2s ease;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0;
 }
 
-#uncertainty-toggle:hover {
+/* Main FAB button */
+.dih-fab-main {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    background: var(--book-accent, #8b7355);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.2s ease,
+                background-color 0.2s ease;
+    z-index: 2;
+    position: relative;
+}
+
+.dih-fab-main:hover {
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.dih-fab-main svg {
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dih-fab-open .dih-fab-main svg {
+    transform: rotate(90deg);
+}
+
+/* Sub-action buttons */
+.dih-fab-action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease,
+                max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                margin 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dih-fab-action-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    background: var(--book-bg, #ffffff);
+    border: 1px solid var(--book-border, #d4c5b9);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--book-text, #2a2a2a);
+    transition: background-color 0.15s ease,
+                border-color 0.15s ease,
+                box-shadow 0.15s ease;
+}
+
+.dih-fab-action:hover .dih-fab-action-icon {
     background-color: var(--book-light, #f9f8f3);
     border-color: var(--book-accent, #8b7355);
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 }
 
-#uncertainty-toggle:focus {
-    outline: none;
-    border-color: var(--book-accent, #8b7355);
-    box-shadow: 0 0 0 2px rgba(139, 115, 85, 0.2);
-}
-
-#uncertainty-toggle .toggle-icon {
-    font-size: 1rem;
-}
-
-#uncertainty-toggle .toggle-text {
+.dih-fab-action-label {
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--book-bg, #ffffff);
+    border: 1px solid var(--book-border, #d4c5b9);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--book-text, #2a2a2a);
     white-space: nowrap;
+    opacity: 0;
+    transform: translateX(8px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    pointer-events: none;
 }
 
-/* When CI is hidden, show muted state */
-#uncertainty-toggle.ci-hidden {
-    background-color: var(--book-light, #f9f8f3);
-    color: var(--book-accent, #8b7355);
+/* Show sub-actions when FAB is open */
+.dih-fab-open .dih-fab-action {
+    opacity: 1;
+    max-height: 60px;
+    overflow: visible;
+    margin-bottom: 8px;
+    pointer-events: auto;
 }
 
-/* Hide toggle on print */
+/* Staggered animation: actions closest to the gear animate first.
+   nth-last-child(1) is the main gear button itself, so start at (2). */
+.dih-fab-open .dih-fab-action:nth-last-child(2) { transition-delay: 0.02s; }
+.dih-fab-open .dih-fab-action:nth-last-child(3) { transition-delay: 0.05s; }
+.dih-fab-open .dih-fab-action:nth-last-child(4) { transition-delay: 0.08s; }
+.dih-fab-open .dih-fab-action:nth-last-child(5) { transition-delay: 0.11s; }
+.dih-fab-open .dih-fab-action:nth-last-child(6) { transition-delay: 0.14s; }
+.dih-fab-open .dih-fab-action:nth-last-child(7) { transition-delay: 0.17s; }
+
+/* Show labels on hover */
+.dih-fab-open .dih-fab-action:hover .dih-fab-action-label {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+
+/* Print: hide FAB */
 @media print {
-    #uncertainty-toggle {
+    .dih-fab {
         display: none !important;
     }
 }
 
 /* Mobile adjustments */
 @media (max-width: 767px) {
-    #uncertainty-toggle {
+    .dih-fab {
         bottom: 15px;
         right: 15px;
-        padding: 6px 12px;
-        font-size: 0.8rem;
+    }
+
+    .dih-fab-main {
+        width: 48px;
+        height: 48px;
+    }
+
+    .dih-fab-action-icon {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+    }
+
+    .dih-fab-action-label {
+        font-size: 0.75rem;
     }
 }
 
@@ -976,123 +1070,53 @@ body.hide-uncertainty [data-ci-hidden] {
 }
 
 /* ==========================================
-   DARK MODE
+   DARK MODE - inverse of the book palette
+   Activated by Quarto's theme toggle (sets body.quarto-dark).
+   Only the --book-* vars flip here; everything downstream reads through them.
    ========================================== */
+body.quarto-dark {
+    --book-bg:      #1a1a1a;  /* Was white paper */
+    --book-text:    #e0dcd3;  /* Was soft black */
+    --book-accent:  #c9a876;  /* Was leather brown (brighter for contrast on dark) */
+    --book-border:  #3d3528;  /* Was subtle tan */
+    --book-heading: #f5f0e6;  /* Was deep charcoal */
+    --book-light:   #262626;  /* Was light cream (now an elevated dark surface) */
 
-html.dark-mode {
-    --book-bg: #1a1a1a;
-    --book-text: #e0e0e0;
-    --book-accent: #c9a96e;
-    --book-border: #3a3a3a;
-    --book-heading: #f0f0f0;
-    --book-light: #252525;
+    /* Mermaid diagram palette - dark */
+    --mermaid-bg-color:          #1a1a1a;
+    --mermaid-node-bg-color:     #262626;
+    --mermaid-edge-color:        #c9a876;
+    --mermaid-border-color:      #3d3528;
+    --mermaid-node-fg-color:     #e0dcd3;
+    --mermaid-label-color:       #e0dcd3;
+    --mermaid-alt-bg-color:      #262626;
+    --mermaid-cluster-bg-color:  #2a2520;
+
+    color-scheme: dark;
 }
 
-html.dark-mode body {
-    background-color: var(--book-bg);
-    color: var(--book-text);
-}
+/* Dark-mode overrides for hardcoded palette colors that dodge the --book-* vars */
+body.quarto-dark .callout-note.callout         { border-left-color: #7a6a58; }
+body.quarto-dark .callout-note.callout .callout-title-container      { color: #b0a090; }
+body.quarto-dark .callout-important.callout    { border-left-color: #b88a5a; }
+body.quarto-dark .callout-important.callout .callout-title-container { color: #d6a878; }
+body.quarto-dark .callout-tip.callout,
+body.quarto-dark .callout.callout-style-default.callout-tip          { border-left-color: #8a7a68; }
+body.quarto-dark .callout-tip.callout .callout-title-container,
+body.quarto-dark .callout.callout-style-default.callout-tip .callout-title-container { color: #b0a090; }
+body.quarto-dark .callout-caution.callout      { border-left-color: #9a8a78; }
+body.quarto-dark .callout-caution.callout .callout-title-container   { color: #b8a890; }
 
-html.dark-mode .card,
-html.dark-mode pre,
-html.dark-mode .mermaid {
-    background-color: var(--book-light);
-    border-color: var(--book-border);
-}
+/* Parameter links - invert the dark-blue hover/definition colors for readability on dark bg */
+body.quarto-dark .parameter-link:hover       { color: #8ab4e8; border-bottom-color: #8ab4e8; }
+body.quarto-dark .parameter-definition      { color: #d0c8b8; }
+body.quarto-dark .parameter-definition:hover { color: #f5f0e6; border-bottom-color: #c9a876; }
 
-html.dark-mode code {
-    background-color: var(--book-light);
-}
-
-html.dark-mode table tbody tr:hover {
-    background-color: var(--book-light);
-}
-
-html.dark-mode .hero-banner {
-    background: linear-gradient(to bottom, var(--book-bg) 0%, var(--book-light) 100%);
-}
-
-html.dark-mode img {
-    opacity: 0.9;
-}
-
-/* Dark mode toggle button */
-#dark-mode-toggle {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000;
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    background-color: var(--book-bg, #ffffff);
-    border: 1px solid var(--book-border, #d4c5b9);
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-#dark-mode-toggle:hover {
-    background-color: var(--book-light, #f9f8f3);
-    border-color: var(--book-accent, #8b7355);
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-    transform: scale(1.05);
-}
-
-#dark-mode-toggle:focus {
-    outline: none;
-    border-color: var(--book-accent, #8b7355);
-}
-
-/* ==========================================
-   COPY CITATION BUTTON
-   ========================================== */
-
-#copy-citation-btn {
-    position: fixed;
-    bottom: 70px;
-    right: 20px;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    background-color: var(--book-bg, #ffffff);
-    border: 1px solid var(--book-border, #d4c5b9);
-    border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--book-text, #2a2a2a);
-    transition: all 0.2s ease;
-}
-
-#copy-citation-btn:hover {
-    background-color: var(--book-light, #f9f8f3);
-    border-color: var(--book-accent, #8b7355);
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-}
-
-#copy-citation-btn:focus {
-    outline: none;
-    border-color: var(--book-accent, #8b7355);
-}
-
-#copy-citation-btn.copied {
-    background-color: #d4edda;
-    border-color: #28a745;
-    color: #155724;
-}
-
-#copy-citation-btn .btn-icon {
-    font-size: 1rem;
+/* Version note - flip its hardcoded greens/creams */
+body.quarto-dark .version-note {
+    border-left-color: #8a9872;
+    background: #262623;
+    color: #c8ccb8;
 }
 
 /* ==========================================
@@ -1160,96 +1184,7 @@ html.dark-mode img {
     }
 }
 
-/* ==========================================
-   BACK TO TOP BUTTON
-   ========================================== */
-
-#back-to-top {
-    position: fixed;
-    bottom: 120px;
-    right: 20px;
-    z-index: 1000;
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    background-color: var(--book-bg, #ffffff);
-    border: 1px solid var(--book-border, #d4c5b9);
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--book-text, #2a2a2a);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-}
-
-#back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-#back-to-top:hover {
-    background-color: var(--book-light, #f9f8f3);
-    border-color: var(--book-accent, #8b7355);
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
-}
-
-#back-to-top:focus {
-    outline: none;
-    border-color: var(--book-accent, #8b7355);
-}
-
-/* ==========================================
-   FLOATING BUTTONS - MOBILE ADJUSTMENTS
-   ========================================== */
-
-@media (max-width: 767px) {
-    #dark-mode-toggle {
-        bottom: 15px;
-        left: 15px;
-        width: 40px;
-        height: 40px;
-    }
-
-    #copy-citation-btn {
-        bottom: 60px;
-        right: 15px;
-        padding: 6px 12px;
-        font-size: 0.8rem;
-    }
-
-    #back-to-top {
-        bottom: 105px;
-        right: 15px;
-        width: 40px;
-        height: 40px;
-    }
-
-    #uncertainty-toggle {
-        bottom: 15px;
-        right: 15px;
-    }
-}
-
-/* ==========================================
-   PRINT STYLES - HIDE UI ELEMENTS
-   ========================================== */
-
-@media print {
-    #dark-mode-toggle,
-    #copy-citation-btn,
-    #back-to-top {
-        display: none !important;
-    }
-}
+/* (Back to top, floating buttons mobile adjustments, and print styles now handled by unified FAB) */
 
 .version-note {
     margin: 1rem 0 1.5rem;
