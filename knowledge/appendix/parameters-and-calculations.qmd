@@ -293,8 +293,8 @@ $$
 **Used in:**
 
 - [The Apocalypse Markup](../appendix/extinction-surplus.html)
-- [The Cost of War](../problem/cost-of-war.html)
 - [A 1% Treaty](../solution/1-percent-treaty.html)
+- [The Cost of War](../problem/cost-of-war.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
 
 :::
@@ -4890,6 +4890,7 @@ $$
 - [Health Dividend](../economics/health-dividend.html)
 - [The Earth Optimization Prize](../strategy/earth-optimization-prize.html)
 - [Money Comes From a Building and They Use It to Kill People](../economics/central-banks.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
 - [The Planetary Constitutional Convention](../strategy/planetary-constitutional-convention.html)
 - [About This Manual](../appendix/back-cover.html)
@@ -5802,9 +5803,9 @@ $$
 - [Ubiquitous Pragmatic Trial Impact Analysis: How to Prevent a Year of Death and Suffering for 84 Cents](../appendix/dfda-impact-paper.html)
 - [Why Every Nonprofit Should Support a 1% treaty](../strategy/nonprofit-coalition-strategy.html)
 - [Health Dividend](../economics/health-dividend.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Earth Optimization Protocol v1](../strategy/earth-optimization-protocol-v1.html)
 - [The Untapped Therapeutic Frontier](../problem/untapped-therapeutic-frontier.html)
-- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Aligning Incentives](../solution/aligning-incentives.html)
 - [Frequently Asked Objections](../appendix/faq.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
@@ -6186,6 +6187,7 @@ $$
 - [Ubiquitous Pragmatic Trial Impact Analysis: How to Prevent a Year of Death and Suffering for 84 Cents](../appendix/dfda-impact-paper.html)
 - [Health Dividend](../economics/health-dividend.html)
 - [About This Manual](../appendix/back-cover.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Earth Optimization Protocol v1](../strategy/earth-optimization-protocol-v1.html)
 - [The Planetary Constitutional Convention](../strategy/planetary-constitutional-convention.html)
 - [Conclusion](../appendix/conclusion.html)
@@ -6318,6 +6320,7 @@ $$
 **Used in:**
 
 - [Ubiquitous Pragmatic Trial Impact Analysis: How to Prevent a Year of Death and Suffering for 84 Cents](../appendix/dfda-impact-paper.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Health Dividend](../economics/health-dividend.html)
 - [The 1% Treaty: Harnessing Greed to Eradicate Disease](../economics/1-pct-treaty-impact.html)
 - [About This Manual](../appendix/back-cover.html)
@@ -6433,6 +6436,7 @@ $$
 - [Ubiquitous Pragmatic Trial Impact Analysis: How to Prevent a Year of Death and Suffering for 84 Cents](../appendix/dfda-impact-paper.html)
 - [Health Dividend](../economics/health-dividend.html)
 - [Frequently Asked Objections](../appendix/faq.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
 
 :::
@@ -6587,10 +6591,10 @@ $$
 - [The Continuous Evidence Generation Protocol: Two-Stage Validation (RWE → Pragmatic Trials)](../appendix/dfda-spec-paper.html)
 - [Your FDA Is Unsafe and Ineffective](../problem/fda-is-unsafe-and-ineffective.html)
 - [Optimization Summary](../solution.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [The Proof: Overview](../proof.html)
 - [Earth Optimization Protocol v1](../strategy/earth-optimization-protocol-v1.html)
 - [NIH Fails to Institute Health](../problem/nih-fails-2-institute-health.html)
-- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [A Decentralized FDA](../solution/dfda.html)
 - [Aligning Incentives](../solution/aligning-incentives.html)
 - [Frequently Asked Objections](../appendix/faq.html)
@@ -7846,6 +7850,7 @@ $$
 
 - [The Invisible Graveyard: Quantifying the Mortality Cost of FDA Efficacy Lag](../appendix/invisible-graveyard.html)
 - [The Continuous Evidence Generation Protocol: Two-Stage Validation (RWE → Pragmatic Trials)](../appendix/dfda-spec-paper.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
 - [The Planetary Constitutional Convention](../strategy/planetary-constitutional-convention.html)
 - [The Earth Optimization Prize](../strategy/earth-optimization-prize.html)
@@ -8834,6 +8839,7 @@ $$
 - [Your Personal Benefits](../call-to-action/your-personal-benefits.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
 - [The Earth Optimization Prize](../strategy/earth-optimization-prize.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 
 :::
 
@@ -9434,6 +9440,7 @@ $$
 
 **Used in:**
 
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Peace Dividend](../economics/peace-dividend.html)
 
 :::
@@ -10151,6 +10158,7 @@ $$
 
 **Used in:**
 
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Peace Dividend](../economics/peace-dividend.html)
 
 :::
@@ -11206,6 +11214,7 @@ $$
 - [Medical Research Spending: The Lie](../appendix/global-government-medical-research-spending.html)
 - [Diagnostic Summary](../problem.html)
 - [Genetic Slavery](../problem/genetic-slavery.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Earth Optimization Protocol v1](../strategy/earth-optimization-protocol-v1.html)
 - [Why Every Nonprofit Should Support a 1% treaty](../strategy/nonprofit-coalition-strategy.html)
 - [Campaign Budget: The Legal Bribery Machine](../economics/campaign-budget.html)
@@ -12404,6 +12413,7 @@ $$
 
 **Used in:**
 
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Peace Dividend](../economics/peace-dividend.html)
 
 :::
@@ -12541,6 +12551,7 @@ $$
 **Used in:**
 
 - [Peace Dividend](../economics/peace-dividend.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 
 :::
 
@@ -13914,13 +13925,13 @@ $$
 **Used in:**
 
 - [Peace Dividend](../economics/peace-dividend.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [The Proof: Overview](../proof.html)
 - [Frequently Asked Objections](../appendix/faq.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
 - [The Earth Optimization Prize](../strategy/earth-optimization-prize.html)
 - [Unrepresentative Democracy](../problem/unrepresentative-democracy.html)
 - [Optimization Summary](../solution.html)
-- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Earth Optimization Protocol v1](../strategy/earth-optimization-protocol-v1.html)
 - [Treaty Feasibility & Cost Analysis](../appendix/treaty-feasibility.html)
 - [The 1% Treaty: Harnessing Greed to Eradicate Disease](../economics/1-pct-treaty-impact.html)
@@ -15846,6 +15857,7 @@ $$
 - [The Earth Optimization Prize](../strategy/earth-optimization-prize.html)
 - [About This Manual](../appendix/back-cover.html)
 - [Money Comes From a Building and They Use It to Kill People](../economics/central-banks.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [The Planetary Constitutional Convention](../strategy/planetary-constitutional-convention.html)
 
 :::
@@ -23896,10 +23908,10 @@ $$
 
 **Used in:**
 
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [The Proof: Overview](../proof.html)
 - [The Cost of War](../problem/cost-of-war.html)
 - [Unrepresentative Democracy](../problem/unrepresentative-democracy.html)
-- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Frequently Asked Objections](../appendix/faq.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
 
@@ -24678,6 +24690,7 @@ $$
 **Used in:**
 
 - [The Cost of War](../problem/cost-of-war.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
 
 :::
@@ -24977,6 +24990,7 @@ $$
 
 - [The Cost of War](../problem/cost-of-war.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [The Earth Optimization Prize](../strategy/earth-optimization-prize.html)
 
 :::
@@ -27988,6 +28002,7 @@ Annual probability of being killed by terrorism expressed as '1 in X'. An Americ
 
 **Used in:**
 
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
 
 :::
@@ -28615,9 +28630,9 @@ dFDA pragmatic trial cost per patient. Uses ADAPTABLE trial ($929) as DELIBERATE
 - [The 1% Treaty: Harnessing Greed to Eradicate Disease](../economics/1-pct-treaty-impact.html)
 - [Ubiquitous Pragmatic Trial Impact Analysis: How to Prevent a Year of Death and Suffering for 84 Cents](../appendix/dfda-impact-paper.html)
 - [The Continuous Evidence Generation Protocol: Two-Stage Validation (RWE → Pragmatic Trials)](../appendix/dfda-spec-paper.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [A Decentralized FDA](../solution/dfda.html)
 - [Earth Optimization Protocol v1](../strategy/earth-optimization-protocol-v1.html)
-- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [The Earth Optimization Prize](../strategy/earth-optimization-prize.html)
 - [Optimization Summary](../solution.html)
 - [Aligning Incentives](../solution/aligning-incentives.html)
@@ -31884,10 +31899,10 @@ Phase 3 cost per patient (median from FDA study)
 - [A Decentralized FDA](../solution/dfda.html)
 - [The Oxford RECOVERY Trial](../appendix/recovery-trial.html)
 - [Earth Optimization Protocol v1](../strategy/earth-optimization-protocol-v1.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [The Optimal Budget Generator: A Causal Inference Protocol for Maximizing Median Health and Wealth Through Public Goods Funding](../appendix/optimal-budget-generator-spec.html)
 - [NIH Fails to Institute Health](../problem/nih-fails-2-institute-health.html)
 - [The Untapped Therapeutic Frontier](../problem/untapped-therapeutic-frontier.html)
-- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Aligning Incentives](../solution/aligning-incentives.html)
 - [The Continuous Evidence Generation Protocol: Two-Stage Validation (RWE → Pragmatic Trials)](../appendix/dfda-spec-paper.html)
 - [Your FDA Is Unsafe and Ineffective](../problem/fda-is-unsafe-and-ineffective.html)
@@ -32577,8 +32592,8 @@ US military spending in 1939 (pre-WW2 baseline) in constant 2024 dollars
 
 **Used in:**
 
-- [Unrepresentative Democracy](../problem/unrepresentative-democracy.html)
 - [A 1% Treaty](../solution/1-percent-treaty.html)
+- [Unrepresentative Democracy](../problem/unrepresentative-democracy.html)
 
 :::
 
@@ -33927,6 +33942,7 @@ Cumulative global military spending since 1913 (Fed era) in constant 2024 dollar
 - [The Cost of War](../problem/cost-of-war.html)
 - [Money Comes From a Building and They Use It to Kill People](../economics/central-banks.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 - [The Earth Optimization Prize](../strategy/earth-optimization-prize.html)
 
 :::
@@ -34726,8 +34742,8 @@ Percentage of treaty funding allocated to Incentive Alignment Bond mechanism for
 - [Earth Optimization Protocol v1](../strategy/earth-optimization-protocol-v1.html)
 - [The 1% Treaty: Harnessing Greed to Eradicate Disease](../economics/1-pct-treaty-impact.html)
 - [Incentive Alignment Bonds](../solution/incentive-alignment-bonds.html)
-- [Optimization Summary](../solution.html)
 - [A 1% Treaty](../solution/1-percent-treaty.html)
+- [Optimization Summary](../solution.html)
 - [Treaty Feasibility & Cost Analysis](../appendix/treaty-feasibility.html)
 - [Financial Plan](../economics/financial-plan.html)
 - [Incentive Alignment Bonds: Making Public Goods Financially and Politically Profitable](../appendix/incentive-alignment-bonds-paper.html)
@@ -35495,8 +35511,8 @@ Percentage of captured dividend funding VICTORY Incentive Alignment Bonds (10%)
 - [Earth Optimization Protocol v1](../strategy/earth-optimization-protocol-v1.html)
 - [The 1% Treaty: Harnessing Greed to Eradicate Disease](../economics/1-pct-treaty-impact.html)
 - [Incentive Alignment Bonds: Making Public Goods Financially and Politically Profitable](../appendix/incentive-alignment-bonds-paper.html)
-- [Incentive Alignment Bonds](../solution/incentive-alignment-bonds.html)
 - [A 1% Treaty](../solution/1-percent-treaty.html)
+- [Incentive Alignment Bonds](../solution/incentive-alignment-bonds.html)
 - [Financial Plan](../economics/financial-plan.html)
 - [Optimization Summary](../solution.html)
 - [The Earth Optimization Prize](../strategy/earth-optimization-prize.html)
@@ -35604,6 +35620,7 @@ Total deaths from wars, conflicts, genocides, and policy-induced famines since 1
 
 - [The Cost of War](../problem/cost-of-war.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
+- [A 1% Treaty](../solution/1-percent-treaty.html)
 
 :::
 
