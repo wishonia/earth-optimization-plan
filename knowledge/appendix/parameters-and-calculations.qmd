@@ -294,9 +294,9 @@ $$
 
 - [The Apocalypse Markup](../appendix/extinction-surplus.html)
 - [A 1% Treaty](../solution/1-percent-treaty.html)
-- [How to Coordinate 10 Million Nonprofits](../strategy/nonprofit-coalition-strategy.html)
 - [The Cost of War](../problem/cost-of-war.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
+- [How to Coordinate 10 Million Nonprofits](../strategy/nonprofit-coalition-strategy.html)
 
 :::
 
@@ -2661,6 +2661,10 @@ where:
 $$
 GDP_{base,15} = GDP_{global} \times (1 + g_{base})^{15}
 $$
+#### Uncertainty Range
+
+**Technical**: Distribution: Fixed
+
 *✓ High confidence*
 
 #### Monte Carlo Distribution
@@ -2701,6 +2705,10 @@ where:
 $$
 GDP_{base,20} = GDP_{global} \times (1 + g_{base})^{20}
 $$
+#### Uncertainty Range
+
+**Technical**: Distribution: Fixed
+
 *✓ High confidence*
 
 #### Monte Carlo Distribution
@@ -5841,6 +5849,7 @@ $$
 - [Frequently Asked Objections](../appendix/faq.html)
 - [Voter Acquisition Grant Proposal](../grant-proposal/voter-acquisition-grant.html)
 - [Declaration of Optimization](../strategy/declaration-of-optimization.html)
+- [Pre-Built Google Ads Campaign for Coalition Partners](../appendix/google-ads-campaign-template.html)
 - [Getting Started](../strategy/getting-started.html)
 - [The Planetary Constitutional Convention](../strategy/planetary-constitutional-convention.html)
 - [The Earth Optimization Prize](../strategy/earth-optimization-prize.html)
@@ -6579,7 +6588,6 @@ $$
 - [The 1% Treaty: Harnessing Greed to Eradicate Disease](../economics/1-pct-treaty-impact.html)
 - [Ubiquitous Pragmatic Trial Impact Analysis: How to Prevent a Year of Death and Suffering for 84 Cents](../appendix/dfda-impact-paper.html)
 - [A 1% Treaty](../solution/1-percent-treaty.html)
-- [How to Coordinate 10 Million Nonprofits](../strategy/nonprofit-coalition-strategy.html)
 - [Health Dividend](../economics/health-dividend.html)
 
 :::
@@ -7242,6 +7250,7 @@ $$
 - [Ubiquitous Pragmatic Trial Impact Analysis: How to Prevent a Year of Death and Suffering for 84 Cents](../appendix/dfda-impact-paper.html)
 - [Health Dividend](../economics/health-dividend.html)
 - [How to Coordinate 10 Million Nonprofits](../strategy/nonprofit-coalition-strategy.html)
+- [Pre-Built Google Ads Campaign for Coalition Partners](../appendix/google-ads-campaign-template.html)
 - [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Voter Acquisition Grant Proposal](../grant-proposal/voter-acquisition-grant.html)
 - [Please Select an Earth: A) Everyone Gets Rich B) Somalia, but Everywhere](../economics/gdp-trajectories.html)
@@ -10981,7 +10990,7 @@ $$
 
 :::
 
-### Life Expectancy Gain Rate (1883-1962): 0 years/decade {#sec-life_expectancy_gain_1883_1962_years_per_decade}
+### Life Expectancy Gain Rate (1883-1962): 3.88 years/decade {#sec-life_expectancy_gain_1883_1962_years_per_decade}
 
 ::: {.callout-note collapse="true" title="📊 Details"}
 
@@ -10995,9 +11004,9 @@ US life expectancy linear gain rate 1883-1962 (pre-Kefauver-Harris).
 $$
 \begin{gathered}
 \Delta LE_{pre62} \\
-= \frac{LE_{US,1962} - LE_{US,1880}}{7.69} \\
-= \frac{70.1 - 39.4}{7.69} \\
-= 0
+= \frac{LE_{US,1962} - LE_{US,1880}}{7.9} \\
+= \frac{70.1 - 39.4}{7.9} \\
+= 3.88
 \end{gathered}
 $$
 
@@ -11021,7 +11030,7 @@ $$
 
 :::
 
-### Life Expectancy Gain Rate (1962-2019): 0 years/decade {#sec-life_expectancy_gain_1962_2019_years_per_decade}
+### Life Expectancy Gain Rate (1962-2019): 1.54 years/decade {#sec-life_expectancy_gain_1962_2019_years_per_decade}
 
 ::: {.callout-note collapse="true" title="📊 Details"}
 
@@ -11035,19 +11044,25 @@ US life expectancy linear gain rate 1962-2019 (post-Kefauver-Harris).
 $$
 \begin{gathered}
 \Delta LE_{post62} \\
-= \frac{LE_{US,2019} - LE_{US,1962}}{5.56} \\
-= \frac{78.9 - 70.1}{5.56} \\
-= 0
+= \frac{LE_{US,2019} - LE_{US,1962}}{5.7} \\
+= \frac{78.9 - 70.1}{5.7} \\
+= 1.54
 \end{gathered}
 $$
 
 **Methodology**: [@post-1962-life-expectancy-slowdown]
+
+#### Uncertainty Range
+
+**Technical**: Distribution: Fixed
 
 *✓ High confidence*
 
 #### Sensitivity Analysis
 
 {{< include ../figures/tornado-life_expectancy_gain_1962_2019_years_per_decade.qmd >}}
+
+{{< include ../figures/sensitivity-table-life_expectancy_gain_1962_2019_years_per_decade.qmd >}}
 
 #### Monte Carlo Distribution
 
@@ -11298,6 +11313,7 @@ $$
 - [A 1% Treaty](../solution/1-percent-treaty.html)
 - [Voter Acquisition Grant Proposal](../grant-proposal/voter-acquisition-grant.html)
 - [Earth Optimization Protocol v1](../strategy/earth-optimization-protocol-v1.html)
+- [Pre-Built Google Ads Campaign for Coalition Partners](../appendix/google-ads-campaign-template.html)
 - [Campaign Budget: The Legal Bribery Machine](../economics/campaign-budget.html)
 - [API & Data Indexes](../appendix/api-and-data.html)
 - [About This Manual](../appendix/back-cover.html)
@@ -12925,6 +12941,10 @@ Cost_{war,cum,treaty} \\
 = C \times (1 - Reduce_{treaty}) \times 80
 \end{gathered}
 $$
+#### Uncertainty Range
+
+**Technical**: Distribution: Fixed
+
 *✓ High confidence*
 
 #### Monte Carlo Distribution
@@ -16796,6 +16816,7 @@ $$
 - [Recruitment & Propaganda Plan](../appendix/recruitment-and-propaganda-plan.html)
 - [The Planetary Constitutional Convention](../strategy/planetary-constitutional-convention.html)
 - [Earth Optimization Protocol v1](../strategy/earth-optimization-protocol-v1.html)
+- [Pre-Built Google Ads Campaign for Coalition Partners](../appendix/google-ads-campaign-template.html)
 - [The Price of Political Change: A Cost-Benefit Framework for Policy Incentivization](../appendix/cost-of-change-analysis.html)
 - [The Earth Optimization Prize](../strategy/earth-optimization-prize.html)
 
@@ -17092,6 +17113,10 @@ N_{untreated} \\
 = 6{,}650
 \end{gathered}
 $$
+#### Uncertainty Range
+
+**Technical**: Distribution: Fixed
+
 *✓ High confidence*
 
 #### Sensitivity Analysis
@@ -25452,6 +25477,10 @@ N_{untreated} \\
 = 6{,}650
 \end{gathered}
 $$
+#### Uncertainty Range
+
+**Technical**: Distribution: Fixed
+
 *✓ High confidence*
 
 #### Monte Carlo Distribution
@@ -25561,6 +25590,10 @@ N_{untreated} \\
 = 6{,}650
 \end{gathered}
 $$
+#### Uncertainty Range
+
+**Technical**: Distribution: Fixed
+
 *✓ High confidence*
 
 #### Monte Carlo Distribution
@@ -28078,9 +28111,10 @@ GiveWell cost per DALY for insecticide-treated bed nets (midpoint estimate, rang
 
 - [The 1% Treaty: Harnessing Greed to Eradicate Disease](../economics/1-pct-treaty-impact.html)
 - [Ubiquitous Pragmatic Trial Impact Analysis: How to Prevent a Year of Death and Suffering for 84 Cents](../appendix/dfda-impact-paper.html)
+- [How to Coordinate 10 Million Nonprofits](../strategy/nonprofit-coalition-strategy.html)
 - [Treaty Feasibility & Cost Analysis](../appendix/treaty-feasibility.html)
 - [Earth Optimization Protocol v1](../strategy/earth-optimization-protocol-v1.html)
-- [How to Coordinate 10 Million Nonprofits](../strategy/nonprofit-coalition-strategy.html)
+- [Pre-Built Google Ads Campaign for Coalition Partners](../appendix/google-ads-campaign-template.html)
 - [The Planetary Constitutional Convention](../strategy/planetary-constitutional-convention.html)
 - [Health Dividend](../economics/health-dividend.html)
 - [The Price of Political Change: A Cost-Benefit Framework for Policy Incentivization](../appendix/cost-of-change-analysis.html)
@@ -30622,8 +30656,8 @@ Number of diseases that receive their FIRST effective treatment each year under 
 - [The 1% Treaty: Harnessing Greed to Eradicate Disease](../economics/1-pct-treaty-impact.html)
 - [Ubiquitous Pragmatic Trial Impact Analysis: How to Prevent a Year of Death and Suffering for 84 Cents](../appendix/dfda-impact-paper.html)
 - [Frequently Asked Objections](../appendix/faq.html)
-- [How to Coordinate 10 Million Nonprofits](../strategy/nonprofit-coalition-strategy.html)
 - [Health Dividend](../economics/health-dividend.html)
+- [How to Coordinate 10 Million Nonprofits](../strategy/nonprofit-coalition-strategy.html)
 
 :::
 
@@ -31637,9 +31671,9 @@ Standard economic value per QALY
 - [The Cost of War](../problem/cost-of-war.html)
 - [Frequently Asked Objections](../appendix/faq.html)
 - [Voter Acquisition Grant Proposal](../grant-proposal/voter-acquisition-grant.html)
+- [How to Coordinate 10 Million Nonprofits](../strategy/nonprofit-coalition-strategy.html)
 - [Diagnostic Summary](../problem.html)
 - [Your FDA Is Unsafe and Ineffective](../problem/fda-is-unsafe-and-ineffective.html)
-- [How to Coordinate 10 Million Nonprofits](../strategy/nonprofit-coalition-strategy.html)
 - [The Most Important Secret in the World](../strategy/call-script.html)
 - [Getting Started](../strategy/getting-started.html)
 
@@ -34586,6 +34620,7 @@ Planning midpoint for the direct cash incentive required to make a successful ve
 
 **Used in:**
 
+- [How to Coordinate 10 Million Nonprofits](../strategy/nonprofit-coalition-strategy.html)
 - [The Earth Optimization Prize](../strategy/earth-optimization-prize.html)
 
 :::
