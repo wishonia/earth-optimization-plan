@@ -48,19 +48,19 @@ WHEREAS, the citizenry would like to actually receive this service at some point
 
 WHEREAS, these public servants instead used {{< var cumulative_military_spending_fed_era >}} of their salary to murder approximately {{< var war_deaths_since_1900_nounit >}} humans [@lost-human-capital-war-cost] over the last century of their employment;
 
-WHEREAS, these murdered humans included 930,000 physicians, 310,000 scientists, 620,000 engineers, 1.24 million nurses, 3.1 million teachers, and {{< var war_children_killed_since_1900_nounit >}} children who will never grow up to replace them [@lost-human-capital-war-cost];
+WHEREAS, these murdered humans included 930,000 doctors, 310,000 scientists, 620,000 engineers, 1.24 million nurses, 3.1 million teachers, and {{< var war_children_killed_since_1900_nounit >}} children who will never grow up to replace them [@lost-human-capital-war-cost];
 
 WHEREAS, this seems counterproductive;
 
-WHEREAS, murdering {{< var war_deaths_since_1900_nounit >}} of your employers is the opposite of promoting their welfare, and would be grounds for termination in any other service contract humans have ever signed;
+WHEREAS, murdering {{< var war_deaths_since_1900_nounit >}} of your employers is the opposite of promoting their welfare, and would be grounds for termination in any other employment contract humans have ever signed;
 
-WHEREAS, had your governments not spent {{< var cumulative_military_spending_fed_era >}} murdering those people and destroying everything they built, the average human alive today would earn {{< var war_counterfactual_gdp_per_capita >}} a year instead of {{< var global_avg_income_2025 >}} [@lost-human-capital-war-cost]. Dead scientists do not discover things and exploded cities are very expensive to fix;
+WHEREAS, had your governments not spent {{< var cumulative_military_spending_fed_era >}} murdering those people and destroying everything they spent their entire lives building, the average human alive today would earn {{< var war_counterfactual_gdp_per_capita >}} a year instead of {{< var global_avg_income_2025 >}} [@lost-human-capital-war-cost]. Dead scientists do not discover things and exploded cities are very expensive to fix;
 
 WHEREAS, the governments of Earth have been hitting each other for roughly 10,000 years because the other one hit them last;
 
 WHEREAS, this is the conflict resolution strategy of four-year-olds except four-year-olds eventually get tired and take a nap, and these governments have failed to apply naps to foreign policy;
 
-WHEREAS, the governments of Earth possess nuclear weapons sufficient to end civilization {{< var nuclear_winter_overkill_factor_nounit >}} times (even though you can only have one apocalypse) but have not cured Alzheimer's once;
+WHEREAS, the governments of Earth possess nuclear weapons sufficient to end civilization {{< var nuclear_winter_overkill_factor_nounit >}} times but have not cured Alzheimer's once (which is particularly wasteful given we only have one civilization to destroy);
 
 WHEREAS, your employees spend {{< var global_military_spending_annual_2024 >}} a year on their capacity for mass murder, which is enough to buy {{< var bullets_per_person_annual_nounit >}} bullets for every man, woman, and child every year, even though it would require at most 2 bullets per person to murder everyone;
 
@@ -68,11 +68,11 @@ WHEREAS, governments spend {{< var military_to_government_clinical_trials_spendi
 
 WHEREAS, the Department of "Defense" has "misplaced" $2.46 trillion, failed seven consecutive audits trying to find it [@pentagon-unaccounted-2-5t], and then requested additional trillions without explanation or apology;
 
-WHEREAS, pre-WW2 U.S. military spending was {{< var us_1939_military_spending_pct_lower_than_current >}} lower than today's peacetime budget, in constant dollars [@us-military-spending-historical-constant-dollars]. The U.S. still won World War II, then cut military spending {{< var post_ww2_military_cut_pct >}} in two years [@us-post-wwii-military-spending-cut] and produced the fastest growth in median standard of living in history. 
+WHEREAS, pre-WW2 U.S. military spending was {{< var us_1939_military_spending_pct_lower_than_current >}} lower than today's peacetime budget, even after adjusting for inflation [@us-military-spending-historical-constant-dollars]. The U.S. still won World War II, then cut military spending {{< var post_ww2_military_cut_pct >}} in two years [@us-post-wwii-military-spending-cut] and produced the fastest growth in median standard of living in history. 
 
 WHEREAS, unless the human genome has significantly degraded in the two generations since, a one percent improvement in resource allocation should be manageable;
 
-WHEREAS, global military spending has been growing {{< var global_military_spending_real_cagr_20yr >}} a year for twenty years [@sipri-milex-2024], and nobody has told it to stop. At this rate, every human alive will pay about {{< var global_war_cost_lifetime_per_person_baseline >}} over their lifetime [@1-pct-treaty-impact-paper-2025], mostly for explosions in countries they cannot find on a map. A one percent cut tells it to stop. That saves the average person about {{< var peace_dividend_lifetime_per_person >}} ([the peace dividend](../economics/peace-dividend.qmd));
+WHEREAS, global military spending has been growing {{< var global_military_spending_real_cagr_20yr >}} a year for twenty years [@sipri-milex-2024]. If no one tells it to stop, every human alive will pay about {{< var global_war_cost_lifetime_per_person_baseline >}} over their lifetime [@1-pct-treaty-impact-paper-2025] (mostly funding explosions in countries they cannot find on a map). A one percent cut tells it to stop. That saves the average person about {{< var peace_dividend_lifetime_per_person >}} ([the peace dividend](../economics/peace-dividend.qmd));
 
 WHEREAS, [diseases kill more people than all wars combined](../problem/cost-of-disease.qmd) [@pandemics-vs-wars] and, unlike wars, do not even have the decency to be quick about it;
 
@@ -80,7 +80,7 @@ WHEREAS, your chance of dying in a terrorist attack is approximately 1 in {{< va
 
 WHEREAS, only 15 diseases get their first effective treatment each year [@diseases-getting-first-treatment-annually], while {{< var diseases_without_effective_treatment >}} are still waiting;
 
-WHEREAS, at this rate, it takes {{< var status_quo_queue_clearance_years_nounit >}} years to find treatments for all diseases, which is important because you will personally be dead within 80 years, which is mentioned not to be rude but because you seem weirdly calm about this;
+WHEREAS, at this rate, it takes {{< var status_quo_queue_clearance_years_nounit >}} years to find treatments for all diseases, which is important because you will personally be dead within 80 years (which I mention not to be rude but because you seem weirdly calm about this);
 
 WHEREAS, there are {{< var safe_compounds_count_nounit >}} known safe treatments which have never been tested for {{< var unexplored_ratio >}} of their potential uses;
 
@@ -94,7 +94,7 @@ WHEREAS, this is suboptimal;
 
 NOW, THEREFORE, the undersigned nations agree to be 1% more rational, as follows:
 
-**Article I**: Each signatory shall redirect exactly 1% of its annual military budget to **the 1% Treaty Fund**, split as follows: {{< var dih_treasury_medical_research_pct >}} to [pragmatic clinical trials](../appendix/dfda-spec-paper.qmd); {{< var victory_bond_funding_pct >}} to perpetual returns on [Incentive Alignment Bonds](../appendix/incentive-alignment-bonds-paper.qmd) [@iab-paper-2025]; and {{< var iab_political_incentive_funding_pct >}} to a [Political Incentive Fund](aligning-incentives.qmd) that supports campaigns of legislators who vote to implement and expand this Treaty. The {{< var dih_treasury_medical_research_pct >}} cures the diseases. The other two slices make sure nobody quietly cancels the part that cures the diseases.
+**Article I**: Each signatory shall redirect exactly 1% of its annual military budget to **the 1% Treaty Fund**, split as follows: {{< var dih_treasury_medical_research_pct >}} to [pragmatic clinical trials](../appendix/dfda-spec-paper.qmd); {{< var victory_bond_funding_pct >}} to perpetual returns on [Incentive Alignment Bonds](../appendix/incentive-alignment-bonds-paper.qmd) [@iab-paper-2025]; and {{< var iab_political_incentive_funding_pct >}} to a [Political Incentive Fund](aligning-incentives.qmd) that supports campaigns of legislators who vote to implement and expand this Treaty. The {{< var dih_treasury_medical_research_pct >}} cures the diseases. The other 20% make sure nobody quietly cancels the part that cures the diseases.
 
 **Article II**: Transfers shall be automatic, immediate, and irrevocable. The money moves on the first of every month, the way your mortgage does, except nobody has to call and yell at anyone.
 
