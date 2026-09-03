@@ -30,7 +30,7 @@ website:
 
 book:
   title: 'How to End War and Disease'
-  subtitle: "The Complete Idiot's Guide to Legally Bribing Your Way to Utopia"
+  subtitle: "A Step-by-Step Guide to Optimizing Your Terrible Civilization"
   author:
     - name: Mike P. Sinn
       email: m@warondisease.org
@@ -38,7 +38,7 @@ book:
       affiliations:
         - name: "Institute for Accelerated Medicine"
           url: https://acceleratedmedicine.org
-  description: "The Complete Idiot's Guide to Legally Bribing Your Way to Utopia"
+  description: "A Step-by-Step Guide to Optimizing Your Terrible Civilization"
   # cover-image: cover.jpg
   favicon: assets/icons/book-favicon.png
   site-url: https://manual.WarOnDisease.org
